@@ -5,12 +5,12 @@
 
 class Process {
 public:
-    int id;                 
-    int arrivalTime;        
-    int burstTime;          
-    int completionTime;     
-    int turnaroundTime;     
-    int waitingTime;        
+    int id;               //行程ID  
+    int arrivalTime;      //到達ready queue時間
+    int burstTime;        //總共執行時間  
+    int completionTime;   //完成時間
+    int turnaroundTime;   //周轉時間
+    int waitingTime;      //等待時間
 
     Process(int pid, int arrival, int burst) {
         id = pid;
@@ -20,20 +20,19 @@ public:
         turnaroundTime = 0;
         waitingTime = 0;
     }
-
+  
     void calculateMetrics() {
         turnaroundTime = completionTime - arrivalTime;
         waitingTime = turnaroundTime - burstTime;
     }
 };
-
+ 
 void simulateFCFS(std::vector<Process>& processes) {
     // 防呆機制：如果傳進來的清單是空的，立刻結束，避免除以零崩潰
-    if (processes.empty()) {
-        std::cout << "錯誤：行程清單是空的，無法模擬！\n";
+    if (processes.empty()){
+        std::cout << "錯誤 : 行程清單是空的，無法模擬!\n";
         return;
     }
-
     std::sort(processes.begin(), processes.end(), [](const Process& a, const Process& b) {
         return a.arrivalTime < b.arrivalTime;
     });
@@ -87,9 +86,9 @@ int main() {
     std::vector<Process> plist;
     
     // 重新確認這三行是否有正確執行
-    plist.push_back(Process(1, 0, 5));
-    plist.push_back(Process(2, 2, 3));
-    plist.push_back(Process(3, 7, 2));
+    plist.push_back(Process(1, 2, 5));
+    plist.push_back(Process(2, 7, 3));
+    plist.push_back(Process(3, 10, 2));
 
     simulateFCFS(plist);
 
