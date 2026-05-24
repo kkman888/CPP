@@ -12,7 +12,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb", 
+            "miDebuggerPath": "C:\\Users\\k1nny\\Downloads\\mingw64\\bin\\gdb.exe", 
             "setupCommands": [
                 {
                     "description": "為 gdb 啟用整齊列印",
